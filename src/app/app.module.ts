@@ -1,5 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -49,10 +49,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from './components/components.module';
 import {CommonModule} from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
-import {DashboardComponent} from './pages/listarticle/dashboard.component';
 import {UserComponent} from './pages/user/user.component';
 import {TablesComponent} from './pages/tables/tables.component';
-import {IconsComponent} from './pages/icons/icons.component';
 import {TypographyComponent} from './pages/typography/typography.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { JwPaginationComponent } from 'jw-angular-pagination';
@@ -64,15 +62,22 @@ import { UpdateEmployeeComponent } from './pages/update-employee/update-employee
 import {MatInputModule, MatOptionModule, MatSelectModule, MatNativeDateModule, MatIconModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import { CategorieListComponent } from './pages/categorie-list/categorie-list.component';
-import { RechercheComponent } from './pages/recherche/recherche.component';
 import { VenteComponent } from './pages/vente/vente.component';
 import { ListMaintenanceComponent } from './pages/list-maintenance/list-maintenance.component';
 import { CreateMaintenanceComponent } from './pages/create-maintenance/create-maintenance.component';
 import { DetailMaintenanceComponent } from './pages/detail-maintenance/detail-maintenance.component';
 import { UpdateMaintenanceComponent } from './pages/update-maintenance/update-maintenance.component';
 import { RetourMaintenanceComponent } from './pages/retour-maintenance/retour-maintenance.component';
+import { InformatiqueComponent } from './pages/informatique/informatique.component';
+import { GsmComponent } from './pages/gsm/gsm.component';
+import { InfoComponent } from './pages/info/info.component';
+import { PiecegsmComponent } from './pages/piecegsm/piecegsm.component';
+import { OccasionComponent } from './pages/occasion/occasion.component';
+import { AutreComponent } from './pages/autre/autre.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   imports: [
+    Ng2SearchPipeModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
@@ -96,10 +101,9 @@ import { RetourMaintenanceComponent } from './pages/retour-maintenance/retour-ma
     MatDatepickerModule, MatInputModule, MatNativeDateModule,
     FormsModule,
   ],
-  declarations: [AppComponent, EmployeeListComponent, DashboardComponent,
+  declarations: [AppComponent, EmployeeListComponent,
     UserComponent,
     TablesComponent,
-    IconsComponent,
     TypographyComponent,
     MapComponent,
     EmployeeDetailsComponent,
@@ -107,13 +111,18 @@ import { RetourMaintenanceComponent } from './pages/retour-maintenance/retour-ma
     UpdateEmployeeComponent,
     JwPaginationComponent,
     CategorieListComponent,
-    RechercheComponent,
     VenteComponent,
     ListMaintenanceComponent,
     CreateMaintenanceComponent,
     DetailMaintenanceComponent,
     UpdateMaintenanceComponent,
     RetourMaintenanceComponent,
+    InformatiqueComponent,
+    GsmComponent,
+    InfoComponent,
+    PiecegsmComponent,
+    OccasionComponent,
+    AutreComponent,
   ],
   exports: [
     A11yModule,

@@ -25,30 +25,11 @@ export class CreateEmployeeComponent implements OnInit {
     this.employeeService.createEmployee(this.employee)
       .subscribe(data => console.log(data), error => console.log(error));
     this.employee = new Employee();
-    this.gotoList();
   }
 
   onSubmit() {
     this.submitted = true;
     this.save();
-  }
-
-  gotoList() {
-    this.router.navigate(['/employees']);
-  }
-  retour() {
     this.router.navigate(['article']);
-  }
-  recherche() {
-    this.router.navigate(['recherche']);
-  }
-  list() {
-    this.router.navigate(['article']);
-  }
-  create() {
-    this.router.navigate(['create']);
-  }
-  vente() {
-    this.router.navigate(['vente']);
   }
 }

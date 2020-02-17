@@ -31,7 +31,7 @@
                   </ul>
                   <form class="form-inline ml-auto">
                     <div class="form-group no-border">
-                      <input type="text" class="form-control" placeholder="Search" />
+                      <input type="text" class="form-control" placeholder="Recherche " />
                     </div>
                     <button type="submit" class="btn btn-link btn-icon btn-round">
                       <i class="tim-icons icon-zoom-split"></i>
@@ -59,18 +59,19 @@
                     class=" form-control"
                     placeholder="Nom de votre Client"
                     type="text"
-                    id="cl" required [(ngModel)]="employee.nom" name="nom"
+                    id="cl" required [(ngModel)]="maintenance.nomc" name="nom"
                   />
                 </div>
               </div>
               <div class=" col-md-5">
                 <div class=" form-group">
                   <label> Prenom Client : </label>
+
                   <input
                     class=" form-control"
                     placeholder="Prenom de votre Client"
                     type="text"
-                    id="pre" required [(ngModel)]="employee.desc" name="desc"
+                    id="pre" required [(ngModel)]="maintenance.prec" name="desc"
                   />
                 </div>
               </div>
@@ -88,12 +89,13 @@
 
                 <div class=" col-md-8 pr-md-1">
                   <div class=" form-group">
+
                     <label> Tel Client : </label>
                     <input
                       class=" form-control"
                       placeholder="Numero de telephone  client"
                       type="text"
-                      id="tel" required [(ngModel)]="employee.nom" name="nom"
+                      id="tel" required [(ngModel)]="maintenance.telc" name="nom"
                     />
                   </div>
                 </div>
@@ -104,7 +106,7 @@
                       class=" form-control"
                       placeholder="Nom d'appareil"
                       type="text"
-                      id="app" required [(ngModel)]="employee.desc" name="desc"
+                      id="app" required [(ngModel)]="maintenance.nomapp" name="desc"
                     />
                   </div>
                 </div>
@@ -122,11 +124,12 @@
               <div class=" col-md-4 pr-md-1">
                 <div class=" form-group">
                   <label> Model  : </label>
+
                   <input
                     class=" form-control"
                     placeholder="Model d'appareil"
                     type="text"
-                    id="prix" required [(ngModel)]="employee.prixa" name="prixa"
+                    id="modelapp" required [(ngModel)]="maintenance.modelapp" name="prixa"
                   />
                 </div>
               </div>
@@ -137,7 +140,7 @@
                     class=" form-control"
                     placeholder="Description de panne"
                     type="text"
-                    id="panne" required [(ngModel)]="employee.prixv"   name="prixv"
+                    id="panne" required [(ngModel)]="maintenance.panne"   name="prixv"
                   />
                 </div>
               </div>
@@ -148,7 +151,7 @@
                     class=" form-control"
                     placeholder="Nom de recepteur"
                     type="text"
-                    id="qte" required [(ngModel)]="employee.qte" name="qte"
+                    id="user" required [(ngModel)]="maintenance.user" name="qte"
                   />
                 </div>
               </div>

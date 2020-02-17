@@ -30,7 +30,7 @@
                   </ul>
                   <form class="form-inline ml-auto">
                     <div class="form-group no-border">
-                      <input type="text" class="form-control" placeholder="Search" />
+                      <input type="text" class="form-control" placeholder="Recherche " />
                     </div>
                     <button type="submit" class="btn btn-link btn-icon btn-round">
                       <i class="tim-icons icon-zoom-split"></i>
@@ -48,7 +48,9 @@
       <div class=" card">
         <div class=" card-header"><h5 class=" title"> Liste de vos articles a maintenir : </h5></div>
         <div class="panel-body">
-
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Chercher ici" [(ngModel)]="term">
+          </div>
 
           <table class="table">
 
@@ -68,14 +70,14 @@
             <tbody>
 
 
-            <tr *ngFor="let maint of maintenance  |  async | paginate:{itemsPerPage: 10, currentPage:p}">
+            <tr *ngFor="let maint of maintenance  |  async |  filter:term | paginate:{itemsPerPage: 10, currentPage:p}">
               <td class="text-center" >{{maint.nomc}}</td>
               <td class="text-center" >{{maint.prec}}</td>
               <td class="text-center" >{{maint.nomapp}}</td>
               <td class="text-center" >{{maint.panne}} </td>
               <td class="text-center" >{{maint.prix}}  DT</td>
-              <td class="text-center" >{{ maint.dateE| date: 'dd/MM/yyyy hh:mm a' }}  </td>
-              <td class="text-center" >{{ maint.dateS| date: 'dd/MM/yyyy hh:mm a' }}  </td>
+              <td class="text-center" >{{ maint.dateE }}  </td>
+              <td class="text-center" >{{ maint.dateS }}  </td>
               <td class="text-center">
                 <button  (click)="maintenenceDetails(maint.id)"  type="button" rel="tooltip" class="btn btn-info btn-link btn-icon btn-sm">
                   <i class="tim-icons icon-bullet-list-67"></i>

@@ -17,9 +17,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarColor07">
                   <ul class="navbar-nav mr-auto">
-                    <h3> <li class="nav-item active">
-                      <a [routerLink]="['/vente']" class=" tim-icons">Vente   <span class="sr-only">(current)</span></a>
-                    </li></h3>
                     <h3> <li class="nav-item">
                       <a [routerLink]="['/create']" class=" tim-icons"> Nouvelle  </a>
                     </li></h3>
@@ -76,7 +73,7 @@
                   </ul>
                   <form class="form-inline ml-auto">
                     <div class="form-group no-border">
-                      <input type="text" class="form-control" placeholder="Search" />
+                      <input type="text" class="form-control" placeholder="Recherche " />
                     </div>
                     <button type="submit" class="btn btn-link btn-icon btn-round">
                       <i class="tim-icons icon-zoom-split"></i>
@@ -95,6 +92,9 @@
         <div class=" card-header"><h5 class=" title"> Liste de vos articles  </h5></div>
         <div class="panel-body">
 
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Chercher ici" [(ngModel)]="term">
+          </div>
 
           <table class="table">
             <thead>
@@ -106,12 +106,13 @@
               <th class="text-center" >Prix d'achat</th>
               <th class="text-center" >Prix de vente </th>
               <th class="text-center" >Actions</th>
+
             </tr>
             </thead>
             <tbody>
 
 
-            <tr *ngFor="let employee of employees  |  async | paginate:{itemsPerPage: 10, currentPage:p}">
+            <tr *ngFor="let employee of employees  |  async | filter:term | paginate:{itemsPerPage: 10, currentPage:p} " >
               <td class="text-center" >{{employee.nom}}</td>
               <td class="text-center" >{{employee.desc}}</td>
               <td class="text-center" >{{employee.cat}}</td>
@@ -141,7 +142,6 @@
 
       </div>
     </div>
-
 
   </div>
 

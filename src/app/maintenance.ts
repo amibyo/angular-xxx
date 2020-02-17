@@ -9,7 +9,7 @@ export class Maintenance {
   user: string;
   tech: string;
   prix: number;
-  dateE: Date;
-  dateS: Date;
+  dateE: string;
+  dateS: string;
   active: boolean;
 }

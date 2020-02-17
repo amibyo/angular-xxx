@@ -1,49 +1,57 @@
+import { VenteService } from '../../vente.service';
+import { Vente } from '../../vente';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Employee} from '../../employee';
 import {EmployeeService} from '../../employee.service';
-import { Employee } from '../../employee';
-import {Observable} from 'rxjs';
+
 @Component({
   selector: 'app-vente',
   templateUrl: './vente.component.html',
   styleUrls: ['./vente.component.scss']
 })
 export class VenteComponent implements OnInit {
-  employees: Observable<Employee[]>;
-  cat2: Observable<Employee[]>;
-  cat3: Observable<Employee[]>;
-  cat4: Observable<Employee[]>;
-  cat5: Observable<Employee[]>;
-  cat6: Observable<Employee[]>;
-  private router: Router;
-  constructor(router: Router, private employeeService: EmployeeService) {
-    this.router = router;
-  }
+  vent: Vente = new Vente();
+  id: number;
+  groupRef: number;
+  idarticle: number;
+  employee: Employee;
+  submitted = false;
+  constructor(private route: ActivatedRoute, private router: Router, private venteService: VenteService,
+              private employeeService: EmployeeService) { }
 
   ngOnInit() {
-    this.reloadData();
-    this.reloadData2();
-    this.reloadData3();
-    this.reloadData4();
-    this.reloadData5();
-    this.reloadData6();
+    this.employee = new Employee();
+    this.id = this.route.snapshot.params.id;
+    this.vent.idarticle = this.id;
+    this.employeeService.getEmployee(this.id)
+      .subscribe(data => {
+        console.log(data);
+        this.employee = data;
+      }, error => console.log(error));
   }
-  reloadData() {
-    this.employees = this.employeeService.getcatarticle('Accessoire Informatique');
+  newEmployee(): void {
+    this.submitted = false;
+    this.vent = new Vente();
+
   }
-  reloadData2() {
-    this.cat2 = this.employeeService.getcatarticle('Accessoire GSM');
+  save() {
+    this.venteService.createvente(this.vent)
+      .subscribe(data => console.log(data), error => console.log(error));
+    this.vent = new Vente();
   }
-  reloadData3() {
-    this.cat3 = this.employeeService.getcatarticle('Piece Informatique');
-  }reloadData4() {
-    this.cat4 = this.employeeService.getcatarticle('Piece GSM');
-  }
-  reloadData5() {
-    this.cat5 = this.employeeService.getcatarticle('Materiels Occasion');
-  }
-  reloadData6() {
-    this.cat6 = this.employeeService.getcatarticle('Autre');
+  updateEmployee() {
+
+    this.employeeService.updateEmployee(this.id, this.employee)
+      .subscribe(data => console.log(data), error => console.log(error));
+
+    this.employee = new Employee();
   }
 
+  onSubmit() {
+    this.employee.qte = this.employee.qte - this.vent.qte;
+    this.save();
+    this.updateEmployee();
+    this.router.navigate(['cat']);
+  }
 }

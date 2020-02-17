@@ -86,45 +86,56 @@
         </div>
       </div>
     </div>
-<div class=" col-md-8">
-  <div class=" card card-user">
-    <div class=" card-body">
-      <p class=" card-text"></p>
-      <div class=" author">
-        <div class=" block block-one"></div>
-        <div class=" block block-two"></div>
-        <div class=" block block-three"></div>
-        <div class=" block block-four"></div>
-        <h4>
-        <p class=" description">Article Details :</p></h4>
-        <div *ngIf="employee">
-          <div>
-            <h3>  <label><b>Nom: </b></label> {{employee.nom}}</h3>
+  </div>
+  <div class=" row">
+
+    <div class=" col-md">
+      <div class=" card">
+        <div class=" card-header"><h5 class=" title"> Categorie : Autre  </h5></div>
+        <div class="panel-body">
+
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Chercher ici" [(ngModel)]="term">
           </div>
-          <div>
-            <h3>   <label><b>Description: </b></label> {{employee.desc}}</h3>
-          </div>
-          <div>
-            <h3>  <label><b>Categorie: </b></label> {{employee.cat}}</h3>
-          </div>
-          <div>
-            <h3>  <label><b>Quantite: </b></label> {{employee.qte}}</h3>
-          </div>
-          <div>
-            <h3>  <label><b>Prix d'achet: </b></label> {{employee.prixa}}</h3>
-          </div>
-          <div>
-            <h3>   <label><b>Prix de vente: </b></label> {{employee.prixv}}</h3>
+          <table class="table">
+            <thead>
+            <tr>
+              <th class="text-center">Nom</th>
+              <th class="text-center">Model</th>
+              <th class="text-center" >Categorie</th>
+              <th class="text-center" >Quantite </th>
+              <th class="text-center" >Prix d'achat</th>
+              <th class="text-center" >Prix de vente </th>
+              <th class="text-center" >Actions</th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+
+            <tr *ngFor="let employee of cat6  |  async |  filter:term | paginate:{itemsPerPage: 10, currentPage:p}">
+              <td class="text-center" >{{employee.nom}}</td>
+              <td class="text-center" >{{employee.desc}}</td>
+              <td class="text-center" >{{employee.cat}}</td>
+              <td class="text-center" >{{employee.qte}}</td>
+              <td class="text-center" >{{employee.prixa}}  DT</td>
+              <td class="text-center" >{{employee.prixv}}  DT</td>
+
+              <td class="text-center">
+
+                <button (click)="vente(employee.id)" class="btn btn-info" style="margin-left: 10px">A Vendre</button>
+              </td>
+
+            </tr>
+            </tbody>
+          </table>
+          <div id="pagination6">
+            <pagination-controls (pageChange)="p=$event"></pagination-controls>
           </div>
         </div>
 
       </div>
-
-    </div>
-    <div class=" card-footer">
-
     </div>
   </div>
 </div>
-  </div>
-</div>
+<!-- main app container -->

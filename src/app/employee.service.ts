@@ -22,7 +22,6 @@ export class EmployeeService {
   updateEmployee(id: number, value: any): Observable<Object> {
     return this.http.put(`${this.baseUrl}/${id}`, value);
   }
-
   deleteEmployee(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
@@ -33,5 +32,8 @@ export class EmployeeService {
 
   getcatarticle(cat: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/catarticle/${cat}`);
+  }
+  getaarticlebynom(nom: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/rech/${nom}`);
   }
 }

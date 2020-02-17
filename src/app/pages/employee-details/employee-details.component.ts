@@ -28,20 +28,4 @@ export class EmployeeDetailsComponent implements OnInit {
         this.employee = data;
       }, error => console.log(error));
   }
-
-  list() {
-    this.router.navigate(['create']);
-  }
-  cat() {
-    this.router.navigate(['Cat']);
-  }
-  recherche() {
-    this.router.navigate(['recherche']);
-  }
-  vente() {
-    this.router.navigate(['vente']);
-  }
-  retour() {
-    this.router.navigate(['article']);
-  }
 }
